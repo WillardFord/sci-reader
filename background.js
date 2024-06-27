@@ -8,15 +8,17 @@ chrome.runtime.onInstalled.addListener(() => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "sendText" && info.selectionText) {
-      fetch('http://your-api-endpoint.com/your-endpoint', {
+      fetch('http://localhost:4500/whats-this', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ text: info.selectionText })
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        chrome.tabs.sendMessage(tab.id, { type: "textResponse", data: data });
+      })
       .catch(error => console.error('Error:', error));
     }
   });

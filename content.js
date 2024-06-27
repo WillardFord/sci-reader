@@ -1,2 +1,6 @@
-// content.js
-// Currently not used, but you can add functionality here if needed.
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === "textResponse") {
+      alert(`Response from server: ${message.data.text}`);
+    }
+  });
+  

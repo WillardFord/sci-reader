@@ -12,7 +12,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["*://*.example.com/*"],
+        "matches": ["*://*.nature.com/*"],
         "js": ["content.js"]
       }
     ],
