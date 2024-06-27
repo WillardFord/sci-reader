@@ -1,0 +1,17 @@
+#header {
+  display: flex;
+  justify-content: space-between; /* Aligns items to both ends */
+  align-items: center;
+}
+
+#headerlogo {
+  margin-right: 10px;
+}
+
+#headercolor {
+  background-color : green;
+}
+
+#title {
+  padding: 10px;
+}
