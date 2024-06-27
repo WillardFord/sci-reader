@@ -1,23 +1,25 @@
 {
     "manifest_version": 3,
-    "name": "Text Sender",
+    "name": "SciReader",
     "version": "1.0",
     "description": "Send selected text to a Python script.",
     "permissions": [
       "contextMenus",
-      "activeTab"
+      "activeTab",
+      "sidePanel"
     ],
     "background": {
       "service_worker": "background.js"
     },
     "content_scripts": [
       {
-        "matches": ["*://*.nature.com/*"],
-        "js": ["content.js"]
+        "js": [ "./scripts/sidepanel.js"],
+        "css": ["./css/sidepanel.css"],
+        "matches": [ "<all_urls>"]
       }
     ],
-    "action": {
-      "default_popup": "popup.html"
-    }
+  "side_panel": {
+    "default_path": "sidepanel.html"
   }
+}
   
