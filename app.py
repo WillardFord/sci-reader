@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from transformers import pipeline
+#from transformers import pipeline
 
 app = Flask(__name__)
 CORS(app, resources={r"/query": {"origins": "chrome-extension://aagpdjcbfobndiiclokdmpopffhhgdmn"}})
 
-print("Loading Mixtral")
-pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1")
-print("Model loaded!")
+#print("Loading Mixtral")
+#pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1")
+#print("Model loaded!")
 
 @app.route('/query', methods=['POST'])
 def receive_text():
@@ -20,10 +20,11 @@ def receive_text():
     return jsonify({"status": "success", "text": response})
 
 def getResponse(text):
-    messages = [
-        {"role":"user", "content":"Who are you?"},
-    ]
-    return pipe(messages)
+    #messages = [
+    #    {"role":"user", "content":"Who are you?"},
+    #]
+    # pipe(messages
+    return f"Wow, this {text} is so prompted."
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=4500)
