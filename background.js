@@ -22,7 +22,13 @@ chrome.runtime.onInstalled.addListener(() => {
       })
       .then(response => response.json())
       .then(data => {
-        chrome.tabs.sendMessage(tab.id, { type: "textResponse", data: data });
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          function: (data) => {
+            chrome.runtime.sendMessage({ type: "textResponse", data: data });
+          },
+          args: [data]
+        });
       })
       .catch(error => console.error('Error:', error));
     }
