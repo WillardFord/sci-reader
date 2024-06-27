@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(() => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "sendText" && info.selectionText) {
-      fetch('http://localhost:4500/query', {
+      fetch('http://10.192.4.32:4500/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +22,13 @@ chrome.runtime.onInstalled.addListener(() => {
       })
       .then(response => response.json())
       .then(data => {
-        chrome.tabs.sendMessage(tab.id, { type: "textResponse", data: data });
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          function: (data) => {
+            chrome.runtime.sendMessage({ type: "textResponse", data: data });
+          },
+          args: [data]
+        });
       })
       .catch(error => console.error('Error:', error));
     }
