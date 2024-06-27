@@ -2,18 +2,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/query": {"origins": "chrome-extension://aagpdjcbfobndiiclokdmpopffhhgdmn"}})
 
-@app.route('/your-endpoint', methods=['POST'])
+@app.route('/query', methods=['POST'])
 def receive_text():
     data = request.get_json()
     text = data.get('text', '')
     # Process the text here
     response = getResponse(text)
     print(f"Received text: {text}")
-    return jsonify({"status": "success", "text": processed_text})
+    print(f"Processed text: {response}")
+    return jsonify({"status": "success", "text": response})
 
 def getResponse(text):
-    return f"Processed: {text}"
+    return f"Damn, {text} is cool!"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=4500)
