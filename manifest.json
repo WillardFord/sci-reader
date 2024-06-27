@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "SciCompanion",
+    "name": "SciCommpanion",
     "version": "1.0",
     "description": "Send selected text to a Python script.",
     "permissions": [

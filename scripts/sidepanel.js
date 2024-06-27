@@ -1,6 +1,7 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "textResponse") {
-      alert(`Response from server: ${message.data.text}`);
+        const responseElement = document.getElementById("response");
+        responseElement.textContent = `Response from server: ${message.data.text}`;
     }
   });
   
