@@ -5,7 +5,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const historyElement = document.getElementById("history");
         const newMessageElement = document.createElement("p");
         newMessageElement.textContent = message.data.text;
-        historyElement.appendChild(newMessageElement);
+        if (historyElement.firstChild) {
+            historyElement.insertBefore(newMessageElement, historyElement.firstChild);
+        } else {
+            // If there are no other nodes, just append it.
+            historyElement.appendChild(newMessageElement);
+        }
     }
   });
 
