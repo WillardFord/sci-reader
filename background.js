@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(() => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "sendText" && info.selectionText) {
-      fetch('http://10.192.4.32:4500/query', {
+      fetch('http://10.192.4.32:4000/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
