@@ -1,8 +1,4 @@
-#header {
-  display: flex;
-  justify-content: space-between; /* Aligns items to both ends */
-  align-items: center;
-}
+
 
 #headerlogo {
   margin-right: 10px;
@@ -28,4 +24,9 @@
 #title {
   padding: 9px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#desc{
+    margin-left: 100px;
+    margin-bottom: 10px;
 }
