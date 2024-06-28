@@ -31,18 +31,22 @@ def getResponse(text):
     print(f"Received {text}")
     prompt = f"""
         - You are a kind professor. 
-        - Summarize the key points of {text} to a student interested in learning about the field. 
+        - Summarize the key points of the following message to a student interested in learning about the field. 
         - Include definitions of terms that may be unfamiliar to a student in short bullet point form.
+        - Keep responses short
+        - Give techincal descriptions that a scientist would need to know
         """
     messages = [
-        {
-            "role":"user", 
-            "content":prompt,
-            "temperature": 0.7,
-            "max_new_tokens": 10000,
+        {  
+            "role": "system",
+            "content": prompt,
         },
+        {
+            "role": "user", 
+            "content": text},
     ]
-    return pipe(messages)
+
+    return pipe(messages, max_new_tokens=300)[0]['generated_text'][-1]
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3500)
