@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message) => {
     if (message.type === "textResponse") {
         const responseElement = document.getElementById("response");
         responseElement.textContent = `Response from server: ${message.data.text}`;
@@ -9,12 +9,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   });
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "moreReferences") {
-        const referencesElement = document.getElementById("references");
-        const linkElement = document.createElement("a");
-        linkElement.href = `https://pubmed.ncbi.nlm.nih.gov/?term=${message.data.text}`;
-        linkElement.textContent = `Search PubMed: ${message.data.text}`;
-        referencesElement.appendChild(linkElement);
-    }
-});
+//chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  //  if (message.type === "moreReferences") {
+    //    const referencesElement = document.getElementById("references");
+      //  const linkElement = document.createElement("a");
+        //linkElement.href = `https://pubmed.ncbi.nlm.nih.gov/?term=${message.data.text}`;
+        //linkElement.textContent = `Search PubMed: ${message.data.text}`;
+        //referencesElement.appendChild(linkElement);
+    //}
+//});
