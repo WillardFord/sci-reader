@@ -3,6 +3,12 @@
     "name": "SciCommpanion",
     "version": "1.0",
     "description": "Send selected text to a Python script.",
+  "action" : {
+    "default_icon": {
+      "16": "./images/SciCommPanion_16.png"
+    },
+      "default_title": "SciCommpanion"
+  },
     "permissions": [
       "contextMenus",
       "activeTab",
@@ -19,6 +25,12 @@
         "matches": [ "<all_urls>"]
       }
     ],
+  "icons": {
+    "16": "./images/SciCommPanion_16.png",
+    "32": "./images/SciCommPanion_32.png",
+    "48": "./images/SciCommPanion_48.png",
+    "128": "./images/SciCommPanion_128.png"
+  },
   "side_panel": {
     "default_path": "sidepanel.html"
   }
