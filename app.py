@@ -6,11 +6,11 @@ from transformers import pipeline
 app = Flask(__name__)
 CORS(app, resources={r"/query": {"origins": "chrome-extension://aagpdjcbfobndiiclokdmpopffhhgdmn"}})
 
-print("Loading Mixtral")
+print("Loading Model")
 myTokenPleaseDontSteal = "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"
 pipe = pipeline(
                 "text-generation", 
-                model = "mistralai/Mixtral-8x7B-v0.1", 
+                model = "raynardj/roberta-pubmed",    #"mistralai/Mixtral-8x7B-v0.1", 
                 token = myTokenPleaseDontSteal
                 )
 print("Model loaded!")
