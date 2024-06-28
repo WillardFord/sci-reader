@@ -28,7 +28,12 @@ def receive_text():
     return jsonify({"status": "success", "text": response})
 
 def getResponse(text):
-    prompt
+    print(f"Received {text}")
+    prompt = f"""
+        - You are a kind professor. 
+        - Summarize the key points of {text} to a student interested in learning about the field. 
+        - Include definitions of terms that may be unfamiliar to a student in short bullet point form.
+        """
     messages = [
         {
             "role":"user", 
