@@ -8,20 +8,21 @@
   margin-right: 10px;
 }
 
-#headercolor {
-  background-color : green;
-}
-
-#title {
-  padding: 10px;
-}
-
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 #F1F9F6(0,0,0,0.2);
   transition: 0.3s;
   padding: 20px;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 #255644(0,0,0,0.2);
+}
+
+#headercolor {
+  background-color : #55B493;
+}
+
+#title {
+  padding: 10px;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
