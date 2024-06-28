@@ -45,8 +45,9 @@ def getResponse(text):
             "role": "user", 
             "content": text},
     ]
-
-    return pipe(messages, max_new_tokens=300)[0]['generated_text'][-1]
+    output = pipe(messages, max_new_tokens=500)[0]['generated_text']
+    print(output)
+    return output[-1]
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3500)
