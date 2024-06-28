@@ -37,7 +37,9 @@ def getResponse(text):
     messages = [
         {
             "role":"user", 
-            "content":prompt
+            "content":prompt,
+            "temperature": 0.7,
+            "max_new_tokens": 10000,
         },
     ]
     return pipe(messages)
