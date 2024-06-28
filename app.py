@@ -10,7 +10,7 @@ print("Loading Model")
 myTokenPleaseDontSteal = "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"
 pipe = pipeline(
                 "text-generation", 
-                model = "NousResearch/Hermes-2-Pro-Mistral-7B" #"raynardj/roberta-pubmed",    #"mistralai/Mixtral-8x7B-v0.1", 
+                model = "NousResearch/Hermes-2-Pro-Mistral-7B", #"raynardj/roberta-pubmed",    #"mistralai/Mixtral-8x7B-v0.1", 
                 token = myTokenPleaseDontSteal,
                 #device = 0
                 )
