@@ -19,7 +19,12 @@
 }
 
 #headercolor {
+  border-radius: 10px;
   background-color : #55B493;
+  box-shadow: 0 4px 8px 0 #F1F9F6;
+  transition: 0.3s;
+  padding: 10px;
+  border-style: outset;
 }
 
 #title {
