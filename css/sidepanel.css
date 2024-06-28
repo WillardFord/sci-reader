@@ -18,6 +18,14 @@
   box-shadow: 0 8px 16px 0 #255644;
 }
 
+#history{
+  box-shadow: 0 4px 8px 0 #F1F9F6;
+  transition: 0.3s;
+  padding: 20px;
+  border-style: outset;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
 #headercolor {
   border-radius: 10px;
   background-color : #55B493;
