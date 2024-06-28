@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(() => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "sendText" && info.selectionText) {
-      fetch('http://10.192.4.32:4500/query', {
+      fetch('http://10.192.4.16:4000/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,4 +33,34 @@ chrome.runtime.onInstalled.addListener(() => {
       .catch(error => console.error('Error:', error));
     }
   });
-  
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "moreReferences",
+    title: "Find More References",
+    contexts: ["selection"]
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "moreReferences" && info.selectionText) {
+    fetch('http://10.192.4.16:4000/query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: info.selectionText })
+    })
+        .then(response => response.json())
+        .then(data => {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            function: (data) => {
+              chrome.runtime.sendMessage({ type: "textResponse", data: data });
+            },
+            args: [data]
+          });
+        })
+        .catch(error => console.error('Error:', error));
+  }
+});
