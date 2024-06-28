@@ -8,16 +8,18 @@ CORS(app, resources={r"/query": {"origins": "chrome-extension://aagpdjcbfobndiic
 
 print("Loading Mixtral")
 myTokenPleaseDontSteal = "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"
-pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1", token = myTokenPleaseDontSteal)
+pipe = pipeline(
+                "text-generation", 
+                model = "mistralai/Mixtral-8x7B-v0.1", 
+                token = myTokenPleaseDontSteal
+                )
 print("Model loaded!")
 
-messages = [
-        {"role":"user", "content":"Who are you?"},
-    ]
-pipe(messages)
+
 
 @app.route('/query', methods=['POST'])
 def receive_text():
+    data = request.get_json()
     text = data.get('text', '')
     # Process the text here
     response = getResponse(text)
@@ -26,8 +28,14 @@ def receive_text():
     return jsonify({"status": "success", "text": response})
 
 def getResponse(text):
-    
-    return f"Wow, this {text} is so prompted."
+    prompt
+    messages = [
+        {
+            "role":"user", 
+            "content":prompt
+        },
+    ]
+    return pipe(messages)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=4500)
