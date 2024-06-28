@@ -10,9 +10,13 @@ print("Loading Mixtral")
 pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1")
 print("Model loaded!")
 
+messages = [
+        {"role":"user", "content":"Who are you?"},
+    ]
+pipe(messages)
+
 @app.route('/query', methods=['POST'])
 def receive_text():
-    data = request.get_json()
     text = data.get('text', '')
     # Process the text here
     response = getResponse(text)
@@ -21,10 +25,7 @@ def receive_text():
     return jsonify({"status": "success", "text": response})
 
 def getResponse(text):
-    #messages = [
-    #    {"role":"user", "content":"Who are you?"},
-    #]
-    # pipe(messages
+    
     return f"Wow, this {text} is so prompted."
 
 if __name__ == '__main__':
