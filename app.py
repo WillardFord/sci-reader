@@ -7,7 +7,8 @@ app = Flask(__name__)
 CORS(app, resources={r"/query": {"origins": "chrome-extension://aagpdjcbfobndiiclokdmpopffhhgdmn"}})
 
 print("Loading Mixtral")
-pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1")
+myTokenPleaseDontSteal = "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"
+pipe = pipeline("text-generation", model = "mistralai/Mixtral-8x22B-Instruct-v0.1", token = myTokenPleaseDontSteal)
 print("Model loaded!")
 
 messages = [
