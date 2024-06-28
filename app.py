@@ -11,7 +11,8 @@ myTokenPleaseDontSteal = "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"
 pipe = pipeline(
                 "text-generation", 
                 model = "raynardj/roberta-pubmed",    #"mistralai/Mixtral-8x7B-v0.1", 
-                token = myTokenPleaseDontSteal
+                token = myTokenPleaseDontSteal,
+                device = 1
                 )
 print("Model loaded!")
 
